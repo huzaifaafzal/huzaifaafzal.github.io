@@ -42,7 +42,7 @@ Keep only `CNAME.example` until the real domain is known. The example file is no
 
 ### Replace domain placeholders
 
-After choosing the domain, replace every `https://huzaifaafzal.github.io/` value in `index.html` with the custom-domain base URL. These values are used by the canonical URL, Open Graph metadata, Twitter card metadata, and Person structured data.
+The current production base URL is `https://portfolio.huzaifaafzal.me/`. If the custom domain changes, replace that value throughout `index.html`; it is used by the canonical URL, Open Graph metadata, Twitter card metadata, and Person structured data.
 
 ## Update the downloadable resume
 
