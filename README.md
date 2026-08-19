@@ -42,7 +42,7 @@ Keep only `CNAME.example` until the real domain is known. The example file is no
 
 ### Replace domain placeholders
 
-After choosing the domain, replace every `https://yourdomain.com/` value in `index.html`. These placeholders are used by the canonical URL, Open Graph metadata, Twitter card metadata, and Person structured data.
+After choosing the domain, replace every `https://huzaifaafzal.github.io/` value in `index.html` with the custom-domain base URL. These values are used by the canonical URL, Open Graph metadata, Twitter card metadata, and Person structured data.
 
 ## Update the downloadable resume
 
