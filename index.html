@@ -85,6 +85,7 @@
       <div class="hero-grid page-shell">
         <div class="hero-copy">
           <p class="kicker"><span class="signal" aria-hidden="true"></span> Los Angeles, CA &middot; Open to relocation</p>
+          <p class="hero-role">Cloud &amp; Platform Engineer &middot; AWS &middot; Terraform &middot; Kubernetes</p>
           <h1 id="hero-title">Infrastructure that stays <em>reliable</em> when the system gets complicated.</h1>
           <p class="hero-intro">I&rsquo;m Huzaifa, a cloud and platform engineer with nearly six years of production AWS experience. I build repeatable infrastructure, reduce operational toil, and bring the same rigor to secure AI systems.</p>
           <div class="hero-actions" aria-label="Profile actions">
@@ -159,6 +160,7 @@
                 <li>Mentored engineers and interns, ran onboarding and knowledge-transfer sessions, and contributed to infrastructure design reviews and incident handoffs.</li>
               </ul>
               <p class="recognition">Recognition: Top Performer, 2023 and 2024</p>
+              <a class="exp-case-link" href="case-studies/disaster-recovery.html">Case study: disaster recovery for the data layer <span aria-hidden="true">&rarr;</span></a>
             </div>
           </article>
 
@@ -178,6 +180,7 @@
                 <li>Supported enterprise AWS operations with CloudWatch, Datadog, S3, EC2, RDS, SNS, SES, WorkSpaces, and ServiceNow.</li>
               </ul>
               <p class="recognition">Recognition: Best Team Award, Systems Limited, 2020</p>
+              <a class="exp-case-link" href="case-studies/self-service-emr.html">Case study: self-service EMR platform <span aria-hidden="true">&rarr;</span></a>
             </div>
           </article>
 
@@ -228,6 +231,7 @@
               <h3>Self-service EMR / Spark platform</h3>
               <p>Parameterized Jenkins/CloudBees and Terraform workflows for approved, validated EMR provisioning and teardown with S3-backed state and automated notifications.</p>
               <div class="tag-row"><span>EMR</span><span>Spark</span><span>Terraform</span><span>Jenkins</span></div>
+              <a class="inline-link" href="case-studies/self-service-emr.html">Read the case study <span aria-hidden="true">&rarr;</span></a>
             </div>
           </article>
 
@@ -297,6 +301,56 @@
           </div>
           <p class="research-note">Local evaluation averaged 2.5 seconds on the desktop deployment and 22 seconds on the laptop across the tested task set.</p>
         </article>
+      </div>
+      <div class="page-shell research-diagram">
+        <figure class="diagram">
+          <div class="diagram-scroll">
+            <svg viewBox="0 0 860 300" role="img" aria-labelledby="gov-title gov-desc">
+              <title id="gov-title">GovernAI architecture</title>
+              <desc id="gov-desc">Three user roles reach Open WebUI, which enforces role-based access, model allow-listing and version pinning, and approved knowledge sources. Open WebUI calls Ollama for local inference with a quantized Qwen model, and data stays in local storage. Everything runs on a Windows Server and Docker host inside a firewall boundary; in the tested setup, Wireshark showed no unintended outbound traffic to the public internet.</desc>
+              <defs><marker id="gov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>
+
+              <rect class="d-box" x="10" y="96" width="150" height="104" rx="10"/>
+              <text class="d-text" x="24" y="122">Users, by role</text>
+              <text class="d-small" x="24" y="144">Standard User</text>
+              <text class="d-small" x="24" y="162">AI Platform Admin</text>
+              <text class="d-small" x="24" y="180">System Administrator</text>
+
+              <rect class="d-zone" x="190" y="16" width="520" height="268" rx="16"/>
+              <text class="d-label" x="206" y="40">Firewall boundary</text>
+              <rect class="d-zone" x="210" y="54" width="480" height="216" rx="12"/>
+              <text class="d-label" x="226" y="76">Windows Server · Docker host</text>
+
+              <rect class="d-accent" x="226" y="92" width="210" height="122" rx="10"/>
+              <text class="d-text" x="240" y="118">Open WebUI</text>
+              <text class="d-small" x="240" y="140">role-based access</text>
+              <text class="d-small" x="240" y="158">model allow-list + pinning</text>
+              <text class="d-small" x="240" y="176">approved knowledge sources</text>
+              <text class="d-small" x="240" y="194">for retrieval</text>
+
+              <rect class="d-strong" x="466" y="92" width="206" height="64" rx="10"/>
+              <text class="d-text-inv" x="480" y="118">Ollama · local inference</text>
+              <text class="d-text-inv" x="480" y="140">quantized Qwen model</text>
+
+              <rect class="d-box" x="466" y="176" width="206" height="54" rx="10"/>
+              <text class="d-text" x="480" y="200">Local storage</text>
+              <text class="d-small" x="480" y="218">data stays on the host</text>
+
+              <rect class="d-box" x="740" y="118" width="110" height="60" rx="10"/>
+              <text class="d-text" x="754" y="143">Public</text>
+              <text class="d-text" x="754" y="162">internet</text>
+
+              <path class="d-line" d="M160 148 H222" marker-end="url(#gov-arrow)"/>
+              <path class="d-line" d="M436 124 H462" marker-end="url(#gov-arrow)"/>
+              <path class="d-line" d="M436 200 H462" marker-end="url(#gov-arrow)"/>
+              <path class="d-line d-dashed" d="M672 148 H736"/>
+              <path class="d-line" d="M697 140 l12 16 M709 140 l-12 16"/>
+              <text class="d-small" x="722" y="208">no unintended outbound</text>
+              <text class="d-small" x="722" y="224">(Wireshark, tested setup)</text>
+            </svg>
+          </div>
+          <figcaption>GovernAI as tested: role-separated access, controlled models, and local inference and storage behind firewall controls.</figcaption>
+        </figure>
       </div>
     </section>
 
