@@ -11,7 +11,7 @@
   <meta property="og:description" content="Jenkins/CloudBees and Terraform workflows for safe, self-service EMR provisioning and teardown.">
   <meta property="og:image" content="https://portfolio.huzaifaafzal.me/assets/og-card.png">
   <title>Self-service EMR platform | Huzaifa Afzal</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -52,7 +52,7 @@
 
         <figure class="diagram">
           <div class="diagram-scroll">
-            <svg viewBox="0 0 860 350" role="img" aria-labelledby="emr-title emr-desc">
+            <svg viewBox="0 0 860 350" role="img" aria-labelledby="emr-title emr-desc"><style>.d-box{fill:#f7f9f6;stroke:#08111f;stroke-width:1.4}.d-strong{fill:#08111f}.d-accent{fill:#c8ff37;stroke:#08111f;stroke-width:1.4}.d-zone{fill:none;stroke:#9aa5b1;stroke-width:1.2;stroke-dasharray:6 5}.d-line{fill:none;stroke:#08111f;stroke-width:1.6}.d-dashed{stroke-dasharray:6 5}.d-text{fill:#08111f;font:700 13px Inter,system-ui,sans-serif}.d-text-inv{fill:#ffffff;font:700 13px Inter,system-ui,sans-serif}.d-small{fill:#4c5968;font:500 11.5px Inter,system-ui,sans-serif}.d-label{fill:#667384;font:700 10.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}</style>
               <title id="emr-title">Self-service EMR provisioning and teardown flow</title>
               <desc id="emr-desc">Provisioning: an engineer fills a Jenkins/CloudBees form, inputs are validated, approved, and applied with Terraform, which creates the EMR cluster and stores state in S3; the pipeline emails the cluster details. Teardown: the requester is checked against the cluster's AWS resource tags, the matching state is loaded from S3, and Terraform destroys the cluster and its resources.</desc>
               <defs><marker id="emr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>
