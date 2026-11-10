@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Case study: a self-service AWS EMR platform built with Jenkins/CloudBees and Terraform, with ownership checks before teardown.">
+  <meta name="theme-color" content="#08111f">
+  <link rel="canonical" href="https://portfolio.huzaifaafzal.me/case-studies/self-service-emr.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Self-service EMR platform | Huzaifa Afzal">
+  <meta property="og:description" content="Jenkins/CloudBees and Terraform workflows for safe, self-service EMR provisioning and teardown.">
+  <meta property="og:image" content="https://portfolio.huzaifaafzal.me/assets/og-card.png">
+  <title>Self-service EMR platform | Huzaifa Afzal</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-shell nav-simple">
+      <a class="wordmark" href="../" aria-label="Huzaifa - home">
+        <span class="wordmark-mark" aria-hidden="true">H</span>
+        <span>Huzaifa Afzal</span>
+      </a>
+      <a class="nav-contact" href="mailto:huzaifaafzal10@gmail.com">Let&rsquo;s talk <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero">
+      <div class="page-shell">
+        <a class="cs-back" href="../#work"><span aria-hidden="true">&larr;</span> Back to selected work</a>
+        <p class="section-index">Case study / Developer platform</p>
+        <h1>Self-service EMR, with teardown you can trust.</h1>
+        <p class="cs-lead">At Systems Limited, assigned to Visionet Systems Inc., I built the Jenkins/CloudBees and Terraform workflows that let Regeneron&rsquo;s users provision and tear down their own AWS EMR clusters, with validation, approvals, and an ownership check before anything is deleted.</p>
+        <div class="cs-meta" aria-label="Technologies"><span>AWS EMR</span><span>Apache Spark</span><span>Terraform</span><span>Jenkins / CloudBees</span><span>Groovy</span><span>Python</span><span>AWS CLI</span><span>S3</span></div>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <article class="cs-body">
+        <h2>Context</h2>
+        <p>Regeneron was moving its Apache Spark and Hadoop workloads from EC2 and Hortonworks Data Platform to AWS EMR. I assessed the existing data lake setup, contributed to the proof of concept, the migration architecture, and validation, and evaluated cost and job-execution tradeoffs for the client.</p>
+        <p>Once workloads ran on EMR, the next problem was access: cluster provisioning was manual. The goal was to let users create and remove clusters themselves without giving up control over the resources.</p>
+
+        <h2>What I built</h2>
+        <ul>
+          <li>A reusable Terraform module that replaced manual provisioning of EMR on EC2, covering cluster prerequisites, S3 resources, AWS networking, and autoscaling.</li>
+          <li>Self-service Jenkins/CloudBees pipelines for provisioning and teardown. Shell scripting turned the form inputs into Terraform variables, and Groovy, Python, and the AWS CLI handled validation and automation.</li>
+          <li>Approvals, job submission, and email notifications that reported the cluster name, cluster ID, and S3 log location.</li>
+          <li>Terraform state stored in and retrieved from S3, so each pipeline run managed the right deployment.</li>
+        </ul>
+
+        <figure class="diagram">
+          <div class="diagram-scroll">
+            <svg viewBox="0 0 860 350" role="img" aria-labelledby="emr-title emr-desc">
+              <title id="emr-title">Self-service EMR provisioning and teardown flow</title>
+              <desc id="emr-desc">Provisioning: an engineer fills a Jenkins/CloudBees form, inputs are validated, approved, and applied with Terraform, which creates the EMR cluster and stores state in S3; the pipeline emails the cluster details. Teardown: the requester is checked against the cluster's AWS resource tags, the matching state is loaded from S3, and Terraform destroys the cluster and its resources.</desc>
+              <defs><marker id="emr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>
+
+              <text class="d-label" x="10" y="34">Provision</text>
+              <rect class="d-box" x="10" y="48" width="110" height="58" rx="10"/><text class="d-text" x="24" y="73">Engineer</text><text class="d-small" x="24" y="92">fills the form</text>
+              <rect class="d-box" x="150" y="48" width="160" height="58" rx="10"/><text class="d-text" x="164" y="73">Jenkins / CloudBees</text><text class="d-small" x="164" y="92">parameterized pipeline</text>
+              <rect class="d-box" x="340" y="48" width="150" height="58" rx="10"/><text class="d-text" x="354" y="73">Validate inputs</text><text class="d-small" x="354" y="92">shell, Groovy, Python</text>
+              <rect class="d-box" x="520" y="48" width="100" height="58" rx="10"/><text class="d-text" x="534" y="73">Approval</text><text class="d-small" x="534" y="92">gate</text>
+              <rect class="d-accent" x="650" y="48" width="200" height="58" rx="10"/><text class="d-text" x="664" y="73">Terraform apply</text><text class="d-small" x="664" y="92">form inputs → variables</text>
+              <path class="d-line" d="M120 77 H146" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M310 77 H336" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M490 77 H516" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M620 77 H646" marker-end="url(#emr-arrow)"/>
+
+              <rect class="d-box" x="650" y="146" width="200" height="58" rx="10"/><text class="d-text" x="664" y="171">EMR cluster</text><text class="d-small" x="664" y="190">S3, networking, autoscaling</text>
+              <rect class="d-box" x="400" y="146" width="200" height="58" rx="10"/><text class="d-text" x="414" y="171">Terraform state</text><text class="d-small" x="414" y="190">stored per deployment in S3</text>
+              <rect class="d-box" x="150" y="146" width="210" height="58" rx="10"/><text class="d-text" x="164" y="171">Email notification</text><text class="d-small" x="164" y="190">cluster name, ID, S3 logs</text>
+              <path class="d-line" d="M750 106 V142" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M690 106 L560 142" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M230 106 V142" marker-end="url(#emr-arrow)"/>
+
+              <text class="d-label" x="10" y="246">Teardown</text>
+              <rect class="d-box" x="10" y="260" width="120" height="58" rx="10"/><text class="d-text" x="24" y="285">Teardown</text><text class="d-small" x="24" y="304">request</text>
+              <rect class="d-accent" x="160" y="260" width="230" height="58" rx="10"/><text class="d-text" x="174" y="285">Ownership check</text><text class="d-small" x="174" y="304">Jenkins user vs. resource tags</text>
+              <rect class="d-box" x="420" y="260" width="190" height="58" rx="10"/><text class="d-text" x="434" y="285">Load that state</text><text class="d-small" x="434" y="304">from S3</text>
+              <rect class="d-box" x="640" y="260" width="210" height="58" rx="10"/><text class="d-text" x="654" y="285">Terraform destroy</text><text class="d-small" x="654" y="304">cluster + its resources</text>
+              <path class="d-line" d="M130 289 H156" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M390 289 H416" marker-end="url(#emr-arrow)"/>
+              <path class="d-line" d="M610 289 H636" marker-end="url(#emr-arrow)"/>
+              <path class="d-line d-dashed" d="M500 204 V256" marker-end="url(#emr-arrow)"/>
+            </svg>
+          </div>
+          <figcaption>Provisioning on top, guarded teardown below. Teardown reads the same per-deployment state that provisioning wrote.</figcaption>
+        </figure>
+
+        <h2>The guardrail that mattered most</h2>
+        <p>Self-service creation is the easy half. Self-service deletion is where a platform earns trust. Before any teardown, the pipeline compared the Jenkins user who made the request with the AWS resource tags on the target cluster. Only if the requester owned that cluster did it retrieve that deployment&rsquo;s Terraform state from S3 and remove the cluster and the resources created for it, including its S3 bucket where applicable.</p>
+        <p>That one check meant users could clean up after themselves without being able to delete someone else&rsquo;s work by mistake.</p>
+
+        <h2>Outcome</h2>
+        <ul>
+          <li>Users provisioned and tore down EMR clusters themselves, with validation and approvals built into the pipeline.</li>
+          <li>The move to EMR improved autoscaling and reduced infrastructure costs for the client.</li>
+          <li>The reusable Terraform module replaced manual cluster provisioning.</li>
+        </ul>
+        <p class="cs-note">Exact time savings and cost figures are not published here.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-layout">
+      <span>&copy; 2026 Syed Huzaifa Bin Afzal</span>
+      <a href="../#work">Back to selected work <span aria-hidden="true">&#8593;</span></a>
+    </div>
+  </footer>
+</body>
+</html>

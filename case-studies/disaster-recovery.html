@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Case study: disaster recovery work across the data layer of a production SaaS platform on AWS: OpenSearch cross-cluster replication, multi-region Terraform, and recovery drills.">
+  <meta name="theme-color" content="#08111f">
+  <link rel="canonical" href="https://portfolio.huzaifaafzal.me/case-studies/disaster-recovery.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Disaster recovery for a production SaaS data layer | Huzaifa Afzal">
+  <meta property="og:description" content="OpenSearch cross-cluster replication, multi-region Terraform, and recovery drills on AWS.">
+  <meta property="og:image" content="https://portfolio.huzaifaafzal.me/assets/og-card.png">
+  <title>Disaster recovery for a production data layer | Huzaifa Afzal</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-shell nav-simple">
+      <a class="wordmark" href="../" aria-label="Huzaifa - home">
+        <span class="wordmark-mark" aria-hidden="true">H</span>
+        <span>Huzaifa Afzal</span>
+      </a>
+      <a class="nav-contact" href="mailto:huzaifaafzal10@gmail.com">Let&rsquo;s talk <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero">
+      <div class="page-shell">
+        <a class="cs-back" href="../#experience"><span aria-hidden="true">&larr;</span> Back to experience</a>
+        <p class="section-index">Case study / Reliability</p>
+        <h1>Making recovery rehearsed, not theoretical.</h1>
+        <p class="cs-lead">At Harri, a workforce-management SaaS platform running across three AWS accounts and four environments, I organized disaster recovery work across the compute, network, and data layers, then ran drills so engineering teams could practice the procedures.</p>
+        <div class="cs-meta" aria-label="Technologies"><span>AWS</span><span>Terraform</span><span>OpenSearch</span><span>ElastiCache / Redis</span><span>RDS / Aurora</span><span>S3</span><span>CloudWatch</span><span>Datadog</span></div>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <article class="cs-body">
+        <h2>Context</h2>
+        <p>I worked with Harri through Kalam4Solutions as a contract DevOps engineer, supporting production EKS and ECS workloads and their dependencies: VPC networking, IAM, Aurora/RDS, Redis/ElastiCache, OpenSearch, DynamoDB, S3, and Lambda. The goal was to improve recovery readiness for the data layer across regions and give engineers procedures they could rehearse.</p>
+
+        <h2>What I did</h2>
+        <ul>
+          <li>Used Terraform to support multi-region changes for the data layer, including OpenSearch, ElastiCache, RDS/Aurora, and S3.</li>
+          <li>Implemented OpenSearch cross-cluster replication.</li>
+          <li>Contributed to Aurora Global Database planning and multi-region recovery procedures, and supported S3 replication.</li>
+          <li>Supported Redis v7 upgrades, the move to the T4g instance family, and RDS/Aurora upgrades and maintenance, validating service behavior after each change.</li>
+          <li>Ran disaster recovery drills with engineering teams to rehearse responses to failure scenarios.</li>
+          <li>Documented change procedures, recovery checks, and runbooks, and reviewed AWS Well-Architected guidance and Trusted Advisor fault-tolerance findings.</li>
+        </ul>
+
+        <figure class="diagram">
+          <div class="diagram-scroll">
+            <svg viewBox="0 0 860 440" role="img" aria-labelledby="dr-title dr-desc">
+              <title id="dr-title">Data-layer disaster recovery across two AWS regions</title>
+              <desc id="dr-desc">Primary and recovery regions each hold OpenSearch, ElastiCache/Redis, RDS/Aurora, and S3. OpenSearch uses cross-cluster replication (implemented), S3 uses replication (supported), and Aurora Global Database is shown as planning work. Terraform manages the multi-region data-layer changes, and recovery drills, runbooks, and recovery checks sit across both regions.</desc>
+              <defs><marker id="dr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>
+
+              <rect class="d-zone" x="40" y="20" width="260" height="270" rx="14"/><text class="d-label" x="56" y="44">Primary region</text>
+              <rect class="d-zone" x="560" y="20" width="260" height="270" rx="14"/><text class="d-label" x="576" y="44">Recovery region</text>
+
+              <rect class="d-box" x="60" y="60" width="220" height="44" rx="9"/><text class="d-text" x="76" y="87">OpenSearch</text>
+              <rect class="d-box" x="60" y="120" width="220" height="44" rx="9"/><text class="d-text" x="76" y="147">ElastiCache / Redis</text>
+              <rect class="d-box" x="60" y="180" width="220" height="44" rx="9"/><text class="d-text" x="76" y="207">RDS / Aurora</text>
+              <rect class="d-box" x="60" y="240" width="220" height="44" rx="9"/><text class="d-text" x="76" y="267">S3</text>
+
+              <rect class="d-box" x="580" y="60" width="220" height="44" rx="9"/><text class="d-text" x="596" y="87">OpenSearch</text>
+              <rect class="d-box" x="580" y="120" width="220" height="44" rx="9"/><text class="d-text" x="596" y="147">ElastiCache / Redis</text>
+              <rect class="d-box" x="580" y="180" width="220" height="44" rx="9"/><text class="d-text" x="596" y="207">RDS / Aurora</text>
+              <rect class="d-box" x="580" y="240" width="220" height="44" rx="9"/><text class="d-text" x="596" y="267">S3</text>
+
+              <path class="d-line" d="M280 82 H576" marker-end="url(#dr-arrow)"/>
+              <text class="d-small" x="314" y="74">cross-cluster replication · implemented</text>
+              <text class="d-small" x="330" y="146">Terraform-managed; Redis v7 upgrades</text>
+              <path class="d-line d-dashed" d="M280 202 H576" marker-end="url(#dr-arrow)"/>
+              <text class="d-small" x="322" y="194">Aurora Global Database · planning</text>
+              <path class="d-line" d="M280 262 H576" marker-end="url(#dr-arrow)"/>
+              <text class="d-small" x="352" y="254">S3 replication · supported</text>
+
+              <rect class="d-accent" x="40" y="314" width="780" height="46" rx="10"/>
+              <text class="d-text" x="58" y="342">Terraform: multi-region data-layer changes, across three AWS accounts and four environments</text>
+              <rect class="d-strong" x="40" y="376" width="780" height="46" rx="10"/>
+              <text class="d-text-inv" x="58" y="404">Recovery drills with engineering teams · runbooks · recovery checks · Well-Architected and Trusted Advisor reviews</text>
+            </svg>
+          </div>
+          <figcaption>Solid arrows show replication that was implemented or supported; the dashed arrow is planning and recovery-design work.</figcaption>
+        </figure>
+
+        <h2>Why drills, not just replication</h2>
+        <p>Replication copies data. It doesn&rsquo;t tell anyone what to do at 3 a.m. when a region has a problem. The drills turned documented procedures into steps engineers had actually practiced, and the recovery checks gave them a way to confirm a service was healthy afterwards.</p>
+
+        <h2>Outcome</h2>
+        <ul>
+          <li>OpenSearch cross-cluster replication in place, with S3 replication and Aurora multi-region planning alongside it.</li>
+          <li>Engineering teams rehearsed recovery procedures through drills, backed by documented runbooks and recovery checks.</li>
+          <li>Datastore upgrades shipped with post-change validation.</li>
+        </ul>
+        <p class="cs-note">Measured recovery-time and recovery-point results are not published here.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-layout">
+      <span>&copy; 2026 Syed Huzaifa Bin Afzal</span>
+      <a href="../#experience">Back to experience <span aria-hidden="true">&#8593;</span></a>
+    </div>
+  </footer>
+</body>
+</html>

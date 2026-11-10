@@ -314,3 +314,42 @@ blockquote { position: relative; z-index: 1; margin: 55px 0 18px; font-family: G
   .section-ink, .research { background: white; color: black; }
   .section-ink h2, .section-ink h3, .section-ink .company, .research h2 { color: black; }
 }
+
+/* ---- Role line under the kicker ---- */
+.hero-role { margin: 0 0 18px; color: var(--ink); font: 760 0.92rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0.02em; }
+
+/* ---- Case study pages ---- */
+.cs-hero { padding: 72px 0 40px; }
+.cs-back { display: inline-flex; gap: 8px; margin-bottom: 36px; color: var(--ink); font-size: 0.82rem; font-weight: 820; text-underline-offset: 4px; }
+.cs-hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.4rem); line-height: 1; letter-spacing: -0.05em; }
+.cs-lead { max-width: 760px; margin: 26px 0 0; color: #4c5968; font-size: clamp(1.02rem, 1.3vw, 1.16rem); }
+.cs-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.cs-meta span { padding: 5px 11px; border: 1px solid #c9cfcb; border-radius: 999px; color: #3c4958; font-size: 0.74rem; font-weight: 750; }
+.cs-body { max-width: 780px; padding-bottom: 110px; }
+.cs-body h2 { margin: 58px 0 14px; color: var(--ink); font-size: clamp(1.5rem, 2.6vw, 2.05rem); line-height: 1.15; letter-spacing: -0.035em; }
+.cs-body p, .cs-body li { color: #3d4a5a; }
+.cs-body ul { padding-left: 1.2em; }
+.cs-body li { margin: 6px 0; }
+.cs-note { margin-top: 40px; padding: 18px 20px; border-left: 3px solid var(--lime); background: var(--white); color: #4c5968; font-size: 0.9rem; }
+.case-links { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: auto; }
+.case-links .inline-link { margin-top: 0; }
+
+/* ---- Diagrams (inline SVG) ---- */
+.diagram { margin: 36px 0; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+.diagram-scroll { overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.diagram figcaption { margin-top: 14px; color: var(--muted); font-size: 0.82rem; }
+.d-box { fill: #f7f9f6; stroke: var(--ink); stroke-width: 1.4; }
+.d-strong { fill: var(--ink); }
+.d-accent { fill: var(--lime); stroke: var(--ink); stroke-width: 1.4; }
+.d-zone { fill: none; stroke: #9aa5b1; stroke-width: 1.2; stroke-dasharray: 6 5; }
+.d-line { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.d-dashed { stroke-dasharray: 6 5; }
+.d-text { fill: var(--ink); font: 700 13px Inter, system-ui, sans-serif; }
+.d-text-inv { fill: var(--white); font: 700 13px Inter, system-ui, sans-serif; }
+.d-small { fill: #4c5968; font: 500 11.5px Inter, system-ui, sans-serif; }
+.d-label { fill: #667384; font: 700 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+.research-diagram { padding-top: 0; }
+@media (max-width: 720px) { .cs-hero { padding-top: 44px; } .diagram { padding: 14px; } }
+.exp-case-link { display: inline-flex; gap: 6px; margin-top: 14px; color: var(--lime); font-size: 0.82rem; font-weight: 820; text-underline-offset: 4px; }
+.nav-shell.nav-simple { grid-template-columns: 1fr auto; }
