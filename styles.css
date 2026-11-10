@@ -199,14 +199,17 @@ blockquote { position: relative; z-index: 1; margin: 55px 0 18px; font-family: G
 .skills-table h3 { margin: 0; color: var(--ink); font-size: 1rem; letter-spacing: -0.02em; }
 .skills-table p { max-width: 820px; margin: 0; color: #637080; font-size: 0.88rem; }
 .credentials-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; margin-top: 105px; }
-.credential-item { display: grid; grid-template-columns: 55px 1fr; gap: 22px; padding: 24px 0; border-top: 1px solid var(--line); }
-.credential-item > span { color: #768391; font: 700 0.74rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.credential-item { display: grid; grid-template-columns: 132px 1fr; gap: 22px; padding: 24px 0; border-top: 1px solid var(--line); }
+.credential-item > span { color: #768391; font: 700 0.74rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: nowrap; }
+@media (max-width: 520px) { .credential-item { grid-template-columns: 1fr; gap: 6px; } }
 .credential-item h3 { margin: 0 0 4px; color: var(--ink); font-size: 1rem; }
 .credential-item p, .credential-item small { display: block; margin: 0; color: #667382; font-size: 0.79rem; }
 .credential-item small { margin-top: 4px; }
 .cert-list { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
 .cert-list li { position: relative; padding: 20px 36px 20px 0; border-bottom: 1px solid var(--line); color: #3c4958; font-size: 0.84rem; font-weight: 700; }
 .cert-list li::after { content: "check"; position: absolute; right: 0; color: #657d00; font: 700 0.66rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.cert-list li.expired { color: #7a8593; font-weight: 600; }
+.cert-list li.expired::after { content: "expired"; color: #8a94a1; }
 
 .community { overflow: clip; background: #dfe5ff; }
 .community-layout { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 90px; align-items: center; }
