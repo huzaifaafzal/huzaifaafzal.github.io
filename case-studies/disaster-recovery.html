@@ -11,7 +11,7 @@
   <meta property="og:description" content="OpenSearch cross-cluster replication, multi-region Terraform, and recovery drills on AWS.">
   <meta property="og:image" content="https://portfolio.huzaifaafzal.me/assets/og-card.png">
   <title>Disaster recovery for a production data layer | Huzaifa Afzal</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -53,7 +53,7 @@
 
         <figure class="diagram">
           <div class="diagram-scroll">
-            <svg viewBox="0 0 860 440" role="img" aria-labelledby="dr-title dr-desc">
+            <svg viewBox="0 0 860 440" role="img" aria-labelledby="dr-title dr-desc"><style>.d-box{fill:#f7f9f6;stroke:#08111f;stroke-width:1.4}.d-strong{fill:#08111f}.d-accent{fill:#c8ff37;stroke:#08111f;stroke-width:1.4}.d-zone{fill:none;stroke:#9aa5b1;stroke-width:1.2;stroke-dasharray:6 5}.d-line{fill:none;stroke:#08111f;stroke-width:1.6}.d-dashed{stroke-dasharray:6 5}.d-text{fill:#08111f;font:700 13px Inter,system-ui,sans-serif}.d-text-inv{fill:#ffffff;font:700 13px Inter,system-ui,sans-serif}.d-small{fill:#4c5968;font:500 11.5px Inter,system-ui,sans-serif}.d-label{fill:#667384;font:700 10.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}</style>
               <title id="dr-title">Data-layer disaster recovery across two AWS regions</title>
               <desc id="dr-desc">Primary and recovery regions each hold OpenSearch, ElastiCache/Redis, RDS/Aurora, and S3. OpenSearch uses cross-cluster replication (implemented), S3 uses replication (supported), and Aurora Global Database is shown as planning work. Terraform manages the multi-region data-layer changes, and recovery drills, runbooks, and recovery checks sit across both regions.</desc>
               <defs><marker id="dr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>

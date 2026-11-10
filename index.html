@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Production AWS, Terraform, Kubernetes, reliability, and secure AI infrastructure.">
   <meta name="twitter:image" content="https://portfolio.huzaifaafzal.me/assets/og-card.png">
   <title>Syed Huzaifa Bin Afzal | Cloud & AI Infrastructure Engineer</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -305,7 +305,7 @@
       <div class="page-shell research-diagram">
         <figure class="diagram">
           <div class="diagram-scroll">
-            <svg viewBox="0 0 860 300" role="img" aria-labelledby="gov-title gov-desc">
+            <svg viewBox="0 0 860 300" role="img" aria-labelledby="gov-title gov-desc"><style>.d-box{fill:#f7f9f6;stroke:#08111f;stroke-width:1.4}.d-strong{fill:#08111f}.d-accent{fill:#c8ff37;stroke:#08111f;stroke-width:1.4}.d-zone{fill:none;stroke:#9aa5b1;stroke-width:1.2;stroke-dasharray:6 5}.d-line{fill:none;stroke:#08111f;stroke-width:1.6}.d-dashed{stroke-dasharray:6 5}.d-text{fill:#08111f;font:700 13px Inter,system-ui,sans-serif}.d-text-inv{fill:#ffffff;font:700 13px Inter,system-ui,sans-serif}.d-small{fill:#4c5968;font:500 11.5px Inter,system-ui,sans-serif}.d-label{fill:#667384;font:700 10.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}</style>
               <title id="gov-title">GovernAI architecture</title>
               <desc id="gov-desc">Three user roles reach Open WebUI, which enforces role-based access, model allow-listing and version pinning, and approved knowledge sources. Open WebUI calls Ollama for local inference with a quantized Qwen model, and data stays in local storage. Everything runs on a Windows Server and Docker host inside a firewall boundary; in the tested setup, Wireshark showed no unintended outbound traffic to the public internet.</desc>
               <defs><marker id="gov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-strong"/></marker></defs>
